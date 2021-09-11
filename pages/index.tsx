@@ -13,6 +13,7 @@ const Home = ({data}) => {
         <meta name="Keywords" content="web development"></meta>
       </Head>
       <h1>Welcome to next!</h1>
+      <p><Link href='/about'> Want to know about us!</Link></p>
     </div>
   )
 }
