@@ -2,8 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({data}) => {
+  const recipies = data.recipies;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +19,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <Link href="/about">{recipies[0].title}</Link>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
@@ -68,5 +71,13 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
+export function getStaticProps() {
+  return {
+    props: {
+      data: {
+        recipies: [{ 'title': 'pineapple-smothies' }, { 'title': 'chocolate-smothies' }]
+      }
+    }
+  }
+}
 export default Home
